@@ -6,10 +6,11 @@
 //
 
 import Foundation
-struct Product {
+struct Product: Hashable {
+    let id: Int
     let name: String
     let price: Int
     let availability: Bool
-    let weight: Double
     let photo: String
+    let measureType: String
 }
