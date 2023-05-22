@@ -8,14 +8,14 @@
 import UIKit
 
 class ProductsViewController: UIViewController {
-    let products = [Product(id: 1, name: "Молоко Амиран детское 230 мл", price: 250, availability: true, photo: "milk_baby", measureType: "шт"),
-                    Product(id: 2, name: "Киви", price: 1400, availability: true, photo: "kiwi", measureType: "кг"),
-                    Product(id: 3, name: "Помидоры черри 200 г", price: 250, availability: true, photo: "tomato_cherry", measureType: "шт"),
-                    Product(id: 4, name: "Зеленые яблоки", price: 945, availability: true, photo: "apples_green", measureType: "кг"),
-                    Product(id: 5, name: "Малина 400 г", price: 250, availability: true, photo: "berries", measureType: "шт"),
-                    Product(id: 6, name: "Киви желтые", price: 3440, availability: true, photo: "kiwi_yellow", measureType: "кг")]
+    let products = [Product(id: 1, name: "Молоко Амиран детское 230 мл", price: 250, availability: true, photo: "milk_baby", measureType: "шт") : 0,
+                    Product(id: 2, name: "Киви", price: 1400, availability: true, photo: "kiwi", measureType: "кг") : 0,
+                    Product(id: 3, name: "Помидоры черри 200 г", price: 250, availability: true, photo: "tomato_cherry", measureType: "шт") : 0,
+                    Product(id: 4, name: "Зеленые яблоки", price: 945, availability: true, photo: "apples_green", measureType: "кг") : 0,
+                    Product(id: 5, name: "Малина 400 г", price: 250, availability: true, photo: "berries", measureType: "шт") : 0,
+                    Product(id: 6, name: "Киви желтые", price: 3440, availability: true, photo: "kiwi_yellow", measureType: "кг") : 0]
     
-    var filteredProducts: [Product] = []
+    var filteredProducts: [Product: Int] = [:]
     var productsInCart: [Product : Int] = [:]
     var isSearching = false
     @IBOutlet weak var goToCartButton: UIButton!
@@ -34,6 +34,7 @@ class ProductsViewController: UIViewController {
         goToCartButton.layer.cornerRadius = 10
     }
     
+    
 //    func configureProducts() {
 //        products.append(Product(name: "Молоко Амиран детское 230 мл", price: 250, availability: true, photo: "milk_baby", measureType: "шт"))
 //        products.append(Product(name: "Киви", price: 1400, availability: true, photo: "kiwi", measureType: "кг"))
@@ -48,9 +49,10 @@ class ProductsViewController: UIViewController {
         guard let secondVC = segue.destination
           as? CartViewController else {return}
         
-
+        
         if segue.identifier == "goToCart" {
             secondVC.productsInCart = productsInCart
+            secondVC.delegate = self
         }
         
     }
@@ -67,9 +69,9 @@ extension ProductsViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as! ProductViewCell
-        //cell.productImage.image = UIImage(named: products[indexPath.row].photo)
-        
-        cell.configureTheCell(passedProduct: filteredProducts[indexPath.row])
+        let product = Array(filteredProducts.keys)[indexPath.row]
+        let count = Array(filteredProducts.values)[indexPath.row]
+        cell.configureTheCell(passedProduct: product, passedCount: count)
         cell.delegate = self
         return cell
     }
@@ -82,13 +84,13 @@ extension ProductsViewController: UICollectionViewDataSource, UICollectionViewDe
 
 extension ProductsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredProducts = []
+        filteredProducts = [:]
         if searchText == "" {
             filteredProducts = products
         }
         for product in products {
-            if product.name.uppercased().contains(searchText.uppercased()) {
-                filteredProducts.append(product)
+            if product.key.name.uppercased().contains(searchText.uppercased()) {
+                filteredProducts[product.key] = product.value
             }
         }
         self.collectionView.reloadData()
@@ -100,24 +102,56 @@ extension ProductsViewController: UISearchBarDelegate {
    
 }
 
+//MARK: - ProductCellDelegate
+
 extension ProductsViewController: ProductCellDelegate {
-    func addToCart(product: Product, isAdded: Bool) {
-        if isAdded == true {
-            if let count = productsInCart[product] {
-                productsInCart[product] = count + 1
-                
-            } else {
-                productsInCart[product] = 1
-            }
+    func addToCart(product: Product, isAdded: Bool, count: Int) {
+        if count == 0 {
+            productsInCart.removeValue(forKey: product)
+            
         } else {
-            if var count = productsInCart[product] {
-                count = count - 1
-                productsInCart[product] = count
-                if count == 0 {
-                    productsInCart.removeValue(forKey: product)
-                }
+            productsInCart[product] = count
+        }
+        filteredProducts[product] = count
+        collectionView.reloadData()
+
+
+//
+//        if isAdded == true {
+//            if let count = productsInCart[product] {
+//                productsInCart[product] = count + 1
+//
+//            } else {
+//                productsInCart[product] = 1
+//            }
+//        } else {
+//            if var count = productsInCart[product] {
+//                count = count - 1
+//                productsInCart[product] = count
+//                if count == 0 {
+//                    productsInCart.removeValue(forKey: product)
+//                }
+//            }
+//        }
+        
+    }
+}
+//MARK: - ProductDelegate
+extension ProductsViewController: ProductDelegate {
+    func checkingProductsInCart(products: [Product : Int]) {
+        for key in productsInCart.keys {
+            if products[key] == nil {
+                filteredProducts[key] = 0
             }
         }
-        
+        productsInCart = products
+        for product in products {
+            
+            filteredProducts[product.key] = product.value
+            if product.value == 0 {
+                print("i am 0")
+            }
+        }
+        collectionView.reloadData()
     }
 }

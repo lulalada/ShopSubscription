@@ -8,5 +8,5 @@
 import Foundation
 protocol ProductCellDelegate: AnyObject
 {
-    func addToCart(product: Product, isAdded: Bool)
+    func addToCart(product: Product, isAdded: Bool, count: Int)
 }

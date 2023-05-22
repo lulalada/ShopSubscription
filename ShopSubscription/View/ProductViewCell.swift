@@ -9,6 +9,7 @@ import UIKit
 
 class ProductViewCell: UICollectionViewCell {
     var product: Product!
+    var count = 0
     weak var delegate:ProductCellDelegate?
     
     @IBOutlet weak var productImage: UIImageView!
@@ -26,17 +27,30 @@ class ProductViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func configureTheCell(passedProduct: Product) {
+    func configureTheCell(passedProduct: Product, passedCount: Int) {
         product = passedProduct
+        count = passedCount
         productImage.layer.cornerRadius = 15
-        addingOrDeletingButton.layer.cornerRadius = 17
-        addingOrDeletingButton.isHidden = true
-        addingButton.layer.cornerRadius = 17
-        
-        nameLabel.text = product.name
         productImage.image = UIImage(named: product.photo)
-        measureTypeLabel.text = product.measureType
+        nameLabel.text = product.name
+        quantityLabel.text = String(count)
         priceLabel.text = "\(product.price) ₸"
+        addingButton.layer.cornerRadius = 17
+        addingOrDeletingButton.layer.cornerRadius = 17
+        if count == 0 {
+            priceLabel.isHidden = false
+            addingButton.isHidden = false
+            addingOrDeletingButton.isHidden = true
+            measureTypeLabel.text = product.measureType
+            
+        } else {
+            priceLabel.isHidden = true
+            addingButton.isHidden = true
+            addingOrDeletingButton.isHidden = false
+            measureTypeLabel.text?.append(" • \(product.price) ₸")
+        }
+        
+        
         
     }
     @IBAction func addingToCart(_ sender: UIButton) {
@@ -49,7 +63,7 @@ class ProductViewCell: UICollectionViewCell {
             }
             let quantity = quantityInt + 1
             quantityLabel.text = String(quantity)
-            delegate?.addToCart(product: product, isAdded: true)
+            delegate?.addToCart(product: product, isAdded: true, count: quantity)
         }
 
     }
@@ -64,7 +78,7 @@ class ProductViewCell: UICollectionViewCell {
                 measureTypeLabel.text = product.measureType
             }
             quantityLabel.text = String(quantity)
-            delegate?.addToCart(product: product, isAdded: false)
+            delegate?.addToCart(product: product, isAdded: false, count: quantity)
         }
     }
     
