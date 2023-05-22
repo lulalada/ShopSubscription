@@ -21,6 +21,7 @@
 		B18AD7E82A17F2C600AF9FF4 /* CartItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B18AD7E62A17F2C600AF9FF4 /* CartItemViewCell.xib */; };
 		B18AD80E2A1BCB7000AF9FF4 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18AD80D2A1BCB7000AF9FF4 /* CartViewController.swift */; };
 		B18AD8102A1BDB3500AF9FF4 /* ProductCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18AD80F2A1BDB3500AF9FF4 /* ProductCellDelegate.swift */; };
+		B18AD8122A1BF7CD00AF9FF4 /* CartItemCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18AD8112A1BF7CD00AF9FF4 /* CartItemCellDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		B18AD7E62A17F2C600AF9FF4 /* CartItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartItemViewCell.xib; sourceTree = "<group>"; };
 		B18AD80D2A1BCB7000AF9FF4 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		B18AD80F2A1BDB3500AF9FF4 /* ProductCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellDelegate.swift; sourceTree = "<group>"; };
+		B18AD8112A1BF7CD00AF9FF4 /* CartItemCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemCellDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				B18AD7C72A15F99B00AF9FF4 /* LaunchScreen.storyboard */,
 				B18AD7CA2A15F99B00AF9FF4 /* Info.plist */,
 				B18AD80F2A1BDB3500AF9FF4 /* ProductCellDelegate.swift */,
+				B18AD8112A1BF7CD00AF9FF4 /* CartItemCellDelegate.swift */,
 			);
 			path = ShopSubscription;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				B18AD7E22A17F26100AF9FF4 /* SubscriptionViewController.swift in Sources */,
 				B18AD7D62A160BAC00AF9FF4 /* ProductViewCell.swift in Sources */,
 				B18AD8102A1BDB3500AF9FF4 /* ProductCellDelegate.swift in Sources */,
+				B18AD8122A1BF7CD00AF9FF4 /* CartItemCellDelegate.swift in Sources */,
 				B18AD7E72A17F2C600AF9FF4 /* CartItemViewCell.swift in Sources */,
 				B18AD7BD2A15F99900AF9FF4 /* AppDelegate.swift in Sources */,
 				B18AD80E2A1BCB7000AF9FF4 /* CartViewController.swift in Sources */,

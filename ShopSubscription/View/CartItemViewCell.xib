@@ -43,6 +43,9 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system"/>
+                                                <connections>
+                                                    <action selector="deletingFromCart:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="62h-Qg-sg4"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jv-3c-PYT">
                                                 <rect key="frame" x="44.666666666666657" y="0.0" width="44.666666666666657" height="34"/>
@@ -56,6 +59,9 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                                <connections>
+                                                    <action selector="addingToCart:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NRv-Id-cql"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.81176470590000005" green="0.81176470590000005" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,6 +86,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addingOrDeletingButton" destination="CEi-Wp-I7p" id="EJ9-LU-kUr"/>
+                <outlet property="costLabel" destination="bcc-65-QSf" id="bcg-c8-rui"/>
+                <outlet property="nameLabel" destination="qtd-eU-mdW" id="pJB-Yp-lfd"/>
+                <outlet property="productImage" destination="COw-Tk-xg1" id="o9U-bG-D4D"/>
+                <outlet property="quantityLabel" destination="2jv-3c-PYT" id="s1p-yv-yp1"/>
+            </connections>
             <point key="canvasLocation" x="-73.282442748091597" y="25"/>
         </tableViewCell>
     </objects>

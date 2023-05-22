@@ -43,6 +43,18 @@ class ProductsViewController: UIViewController {
 //        products.append(Product(name: "Киви желтые", price: 3440, availability: true, photo: "kiwi_yellow", measureType: "кг"))
 //    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        guard let secondVC = segue.destination
+          as? CartViewController else {return}
+        
+
+        if segue.identifier == "goToCart" {
+            secondVC.productsInCart = productsInCart
+        }
+        
+    }
+    
 }
 
 
@@ -107,6 +119,5 @@ extension ProductsViewController: ProductCellDelegate {
             }
         }
         
-        print(productsInCart)
     }
 }

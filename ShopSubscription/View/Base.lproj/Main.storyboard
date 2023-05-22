@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zxy-f4-c9I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hOw-y0-0UO">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8q2-pU-upx">
-                                <rect key="frame" x="0.0" y="123" width="393" height="695"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="95" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8q2-pU-upx">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CartItemCell" rowHeight="95" id="xQB-z3-0py">
@@ -37,15 +37,18 @@
                         <constraints>
                             <constraint firstItem="8q2-pU-upx" firstAttribute="leading" secondItem="oZ3-Hd-nVN" secondAttribute="leading" id="2EL-ON-Ohw"/>
                             <constraint firstItem="8q2-pU-upx" firstAttribute="trailing" secondItem="oZ3-Hd-nVN" secondAttribute="trailing" id="CAn-ec-SXg"/>
-                            <constraint firstItem="8q2-pU-upx" firstAttribute="top" secondItem="oZ3-Hd-nVN" secondAttribute="top" constant="20" id="m6Y-yw-GPw"/>
+                            <constraint firstItem="8q2-pU-upx" firstAttribute="top" secondItem="oZ3-Hd-nVN" secondAttribute="top" id="WnE-wE-UZ8"/>
                             <constraint firstItem="oZ3-Hd-nVN" firstAttribute="bottom" secondItem="8q2-pU-upx" secondAttribute="bottom" id="uCa-Lf-fNL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3ag-ps-wpa"/>
+                    <connections>
+                        <outlet property="tableView" destination="8q2-pU-upx" id="235-bY-072"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dDi-7K-LoQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1634.3511450381679" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="2561.0687022900761" y="3.5211267605633805"/>
         </scene>
         <!--Subscription View Controller-->
         <scene sceneID="zNc-y4-HMs">
@@ -151,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOo-p0-vaU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2507.6335877862593" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="3434.3511450381679" y="3.5211267605633805"/>
         </scene>
         <!--Products View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -162,7 +165,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aHN-60-31Q">
-                                <rect key="frame" x="0.0" y="229" width="393" height="623"/>
+                                <rect key="frame" x="0.0" y="182" width="393" height="670"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e7L-0C-FVt">
                                     <size key="itemSize" width="175" height="275"/>
@@ -182,7 +185,7 @@
                                 </cells>
                             </collectionView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="j74-V1-O78">
-                                <rect key="frame" x="0.0" y="150" width="393" height="56"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
                                 <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -198,7 +201,7 @@
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="TxZ-ma-5ei" kind="show" id="9PT-8m-EIo"/>
+                                    <segue destination="TxZ-ma-5ei" kind="show" identifier="goToCart" id="9PT-8m-EIo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -208,10 +211,10 @@
                             <constraint firstAttribute="bottom" secondItem="aHN-60-31Q" secondAttribute="bottom" id="FzE-mr-QFC"/>
                             <constraint firstItem="aHN-60-31Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HYt-gh-SkB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mLv-WT-iZG" secondAttribute="trailing" constant="16" id="NOg-oI-az9"/>
-                            <constraint firstItem="j74-V1-O78" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="47" id="PQN-sS-LqP"/>
                             <constraint firstItem="j74-V1-O78" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PuY-TG-ACp"/>
                             <constraint firstItem="mLv-WT-iZG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="SCX-hv-Tve"/>
                             <constraint firstItem="mLv-WT-iZG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="XgV-5a-4cZ"/>
+                            <constraint firstItem="j74-V1-O78" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XvU-eP-l0j"/>
                             <constraint firstItem="j74-V1-O78" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Zwd-Ma-ZTD"/>
                             <constraint firstItem="aHN-60-31Q" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lA5-3o-tfc"/>
                             <constraint firstItem="aHN-60-31Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="liZ-yo-pMT"/>
@@ -227,25 +230,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="776.33587786259534" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="1701.5267175572519" y="3.5211267605633805"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="fJN-MB-uMb">
+        <scene sceneID="TJV-5V-uES">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zxy-f4-c9I" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hOw-y0-0UO" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0IP-9V-VsN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2vU-IE-nU3">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0ip-vc-hAJ"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bHp-Eu-8Wf"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WAh-eJ-gZD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T7C-UG-mYc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-150.38167938931298" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="774.80916030534343" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>
