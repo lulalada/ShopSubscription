@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B17D499A2A1D242100CF2F88 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17D49992A1D242100CF2F88 /* Customer.swift */; };
 		B18AD7BD2A15F99900AF9FF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18AD7BC2A15F99900AF9FF4 /* AppDelegate.swift */; };
 		B18AD7BF2A15F99900AF9FF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18AD7BE2A15F99900AF9FF4 /* SceneDelegate.swift */; };
 		B18AD7C42A15F99900AF9FF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18AD7C22A15F99900AF9FF4 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B17D49992A1D242100CF2F88 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		B18AD7B92A15F99900AF9FF4 /* ShopSubscription.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopSubscription.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B18AD7BC2A15F99900AF9FF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B18AD7BE2A15F99900AF9FF4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		B18AD7DE2A16312300AF9FF4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B17D49992A1D242100CF2F88 /* Customer.swift */,
 				B18AD7DA2A16307F00AF9FF4 /* Product.swift */,
 			);
 			path = Model;
@@ -197,6 +200,7 @@
 				B18AD8142A1BFC6500AF9FF4 /* ProductDelegate.swift in Sources */,
 				B18AD7E22A17F26100AF9FF4 /* SubscriptionViewController.swift in Sources */,
 				B18AD7D62A160BAC00AF9FF4 /* ProductViewCell.swift in Sources */,
+				B17D499A2A1D242100CF2F88 /* Customer.swift in Sources */,
 				B18AD8102A1BDB3500AF9FF4 /* ProductCellDelegate.swift in Sources */,
 				B18AD8122A1BF7CD00AF9FF4 /* CartItemCellDelegate.swift in Sources */,
 				B18AD7E72A17F2C600AF9FF4 /* CartItemViewCell.swift in Sources */,

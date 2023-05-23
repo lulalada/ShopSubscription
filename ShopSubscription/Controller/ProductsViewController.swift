@@ -12,11 +12,11 @@ class ProductsViewController: UIViewController {
                     Product(id: 2, name: "Киви", price: 1400, availability: true, photo: "kiwi", measureType: "кг") : 0,
                     Product(id: 3, name: "Помидоры черри 200 г", price: 250, availability: true, photo: "tomato_cherry", measureType: "шт") : 0,
                     Product(id: 4, name: "Зеленые яблоки", price: 945, availability: true, photo: "apples_green", measureType: "кг") : 0,
-                    Product(id: 5, name: "Малина 400 г", price: 250, availability: true, photo: "berries", measureType: "шт") : 0,
+                    Product(id: 5, name: "Малина 400 г", price: 250, availability: false, photo: "berries", measureType: "шт") : 0,
                     Product(id: 6, name: "Киви желтые", price: 3440, availability: true, photo: "kiwi_yellow", measureType: "кг") : 0]
     
     var filteredProducts: [Product: Int] = [:]
-    var productsInCart: [Product : Int] = [:]
+    var productsInCart: [Product: Int] = [:]
     var isSearching = false
     @IBOutlet weak var goToCartButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -32,19 +32,15 @@ class ProductsViewController: UIViewController {
         searchBar.returnKeyType = UIReturnKeyType.done
         collectionView.keyboardDismissMode = .onDrag
         goToCartButton.layer.cornerRadius = 10
+        
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
     }
     
-    
-//    func configureProducts() {
-//        products.append(Product(name: "Молоко Амиран детское 230 мл", price: 250, availability: true, photo: "milk_baby", measureType: "шт"))
-//        products.append(Product(name: "Киви", price: 1400, availability: true, photo: "kiwi", measureType: "кг"))
-//        products.append(Product(name: "Помидоры черри 200 г", price: 250, availability: true, photo: "tomato_cherry", measureType: "шт"))
-//        products.append(Product(name: "Зеленые яблоки", price: 945, availability: true, photo: "apples_green", measureType: "кг"))
-//        products.append(Product(name: "Малина 400 г ", price: 250, availability: true, photo: "berries", measureType: "шт"))
-//        products.append(Product(name: "Киви желтые", price: 3440, availability: true, photo: "kiwi_yellow", measureType: "кг"))
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
 
         guard let secondVC = segue.destination
           as? CartViewController else {return}
@@ -114,28 +110,9 @@ extension ProductsViewController: ProductCellDelegate {
         }
         filteredProducts[product] = count
         collectionView.reloadData()
-
-
-//
-//        if isAdded == true {
-//            if let count = productsInCart[product] {
-//                productsInCart[product] = count + 1
-//
-//            } else {
-//                productsInCart[product] = 1
-//            }
-//        } else {
-//            if var count = productsInCart[product] {
-//                count = count - 1
-//                productsInCart[product] = count
-//                if count == 0 {
-//                    productsInCart.removeValue(forKey: product)
-//                }
-//            }
-//        }
-        
     }
 }
+
 //MARK: - ProductDelegate
 extension ProductsViewController: ProductDelegate {
     func checkingProductsInCart(products: [Product : Int]) {

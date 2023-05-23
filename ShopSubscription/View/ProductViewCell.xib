@@ -104,7 +104,9 @@
             <size key="customSize" width="181" height="265"/>
             <connections>
                 <outlet property="addingButton" destination="Zjd-bl-ltM" id="G3W-2D-umu"/>
+                <outlet property="addingButton1" destination="CIQ-Xg-i1H" id="g3Z-nj-vMu"/>
                 <outlet property="addingOrDeletingButton" destination="U9c-Lp-g34" id="wdn-of-hj4"/>
+                <outlet property="deletingButton" destination="ctI-7U-UvO" id="sIJ-X5-MTJ"/>
                 <outlet property="measureTypeLabel" destination="Mn0-8C-e4o" id="H2l-BB-nHc"/>
                 <outlet property="nameLabel" destination="AH5-7X-oWC" id="QpC-Gm-WDj"/>
                 <outlet property="priceLabel" destination="9WV-Tq-qgh" id="zSc-Hb-o2d"/>

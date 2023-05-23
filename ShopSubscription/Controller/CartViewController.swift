@@ -9,8 +9,14 @@ import UIKit
 
 class CartViewController: UIViewController {
     
-    weak var delegate:ProductDelegate?
+    weak var delegate: ProductDelegate?
+    var totalPrice = 0
     var productsInCart: [Product : Int] = [:]
+    var shouldBlockSegue: Bool = true
+    
+    @IBOutlet weak var goToSubscriptionButton: UIButton!
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,11 +24,36 @@ class CartViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "CartItemViewCell", bundle: nil), forCellReuseIdentifier: "CartItemCell")
-        // Do any additional setup after loading the view.
+        findTotalPrice()
+        totalPriceLabel.text?.append(" \(totalPrice) ₸")
+        goToSubscriptionButton.layer.cornerRadius = 10
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
+    
+    func findTotalPrice() {
+        
+        for products in productsInCart {
+            totalPrice = totalPrice + (products.key.price * products.value)
+        }
+        if totalPrice == 0 {
+            shouldBlockSegue = true
+        } else {
+            shouldBlockSegue = false
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+            if identifier == "goToSubscriptionPage" {
+                if shouldBlockSegue {
+                    return false
+                }
+                return true
+            }
+        return true
+        }
 
 }
 
@@ -51,13 +82,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CartViewController: CartItemCellDelegate {
     func addToCart(product: Product, isAdded: Bool, count: Int) {
-//        if count == 0 {
-//            productsInCart.removeValue(forKey: product)
-//        } else {
-//            productsInCart[product] = count
-//        }
-//        delegate?.checkingProductsInCart(products: productsInCart)
-        
+
         
         productsInCart[product] = count
         

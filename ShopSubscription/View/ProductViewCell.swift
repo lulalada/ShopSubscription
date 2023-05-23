@@ -19,6 +19,8 @@ class ProductViewCell: UICollectionViewCell {
     @IBOutlet weak var measureTypeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var addingButton1: UIButton!
+    @IBOutlet weak var deletingButton: UIButton!
     @IBOutlet weak var addingButton: UIButton!
     
     @IBOutlet weak var priceLabel: UILabel!
@@ -47,10 +49,20 @@ class ProductViewCell: UICollectionViewCell {
             priceLabel.isHidden = true
             addingButton.isHidden = true
             addingOrDeletingButton.isHidden = false
-            measureTypeLabel.text?.append(" • \(product.price) ₸")
+            measureTypeLabel.text = ("\(product.measureType) • \(product.price) ₸")
         }
         
-        
+        if product.availability == false {
+            addingButton.isEnabled = false
+            addingButton1.isEnabled = false
+            deletingButton.isEnabled = false
+            productImage.alpha = 0.3
+        } else {
+            addingButton.isEnabled = true
+            addingButton1.isEnabled = true
+            deletingButton.isEnabled = true
+            productImage.alpha = 1.0
+        }
         
     }
     @IBAction func addingToCart(_ sender: UIButton) {
@@ -59,7 +71,7 @@ class ProductViewCell: UICollectionViewCell {
                 priceLabel.isHidden = true
                 addingButton.isHidden = true
                 addingOrDeletingButton.isHidden = false
-                measureTypeLabel.text?.append(" • \(product.price) ₸")
+                measureTypeLabel.text = ("\(product.measureType) • \(product.price) ₸")
             }
             let quantity = quantityInt + 1
             quantityLabel.text = String(quantity)
