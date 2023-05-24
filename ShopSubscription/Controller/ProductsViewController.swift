@@ -8,7 +8,7 @@
 import UIKit
 
 class ProductsViewController: UIViewController {
-    let products = [Product(id: 1, name: "Молоко Амиран детское 230 мл", price: 250, availability: true, photo: "milk_baby", measureType: "шт") : 0,
+    var products = [Product(id: 1, name: "Молоко Амиран детское 230 мл", price: 250, availability: true, photo: "milk_baby", measureType: "шт") : 0,
                     Product(id: 2, name: "Киви", price: 1400, availability: true, photo: "kiwi", measureType: "кг") : 0,
                     Product(id: 3, name: "Помидоры черри 200 г", price: 250, availability: true, photo: "tomato_cherry", measureType: "шт") : 0,
                     Product(id: 4, name: "Зеленые яблоки", price: 945, availability: true, photo: "apples_green", measureType: "кг") : 0,
@@ -80,6 +80,7 @@ extension ProductsViewController: UICollectionViewDataSource, UICollectionViewDe
 
 extension ProductsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
         filteredProducts = [:]
         if searchText == "" {
             filteredProducts = products
@@ -87,6 +88,7 @@ extension ProductsViewController: UISearchBarDelegate {
         for product in products {
             if product.key.name.uppercased().contains(searchText.uppercased()) {
                 filteredProducts[product.key] = product.value
+                
             }
         }
         self.collectionView.reloadData()
@@ -109,6 +111,7 @@ extension ProductsViewController: ProductCellDelegate {
             productsInCart[product] = count
         }
         filteredProducts[product] = count
+        products = filteredProducts
         collectionView.reloadData()
     }
 }
@@ -123,7 +126,6 @@ extension ProductsViewController: ProductDelegate {
         }
         productsInCart = products
         for product in products {
-            
             filteredProducts[product.key] = product.value
             if product.value == 0 {
                 print("i am 0")

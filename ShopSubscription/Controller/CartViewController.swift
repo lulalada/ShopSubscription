@@ -25,7 +25,7 @@ class CartViewController: UIViewController {
         
         tableView.register(UINib(nibName: "CartItemViewCell", bundle: nil), forCellReuseIdentifier: "CartItemCell")
         findTotalPrice()
-        totalPriceLabel.text?.append(" \(totalPrice) ₸")
+        
         goToSubscriptionButton.layer.cornerRadius = 10
         
     }
@@ -34,7 +34,7 @@ class CartViewController: UIViewController {
     }
     
     func findTotalPrice() {
-        
+        totalPrice = 0
         for products in productsInCart {
             totalPrice = totalPrice + (products.key.price * products.value)
         }
@@ -43,6 +43,8 @@ class CartViewController: UIViewController {
         } else {
             shouldBlockSegue = false
         }
+        totalPriceLabel.text = "Итоговая сумма: \(totalPrice) ₸"
+        
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -89,6 +91,8 @@ extension CartViewController: CartItemCellDelegate {
         if count == 0 {
             productsInCart.removeValue(forKey: product)
         }
+        
+        findTotalPrice()
         delegate?.checkingProductsInCart(products: productsInCart)
         tableView.reloadData()
         
